@@ -2936,18 +2936,24 @@ bool PlaybackHandler::tryGlobalMIDICommandsOff(MIDICable& cable, int32_t channel
 }
 
 void PlaybackHandler::programChangeReceived(MIDICable& cable, int32_t channel, int32_t program) {
-	// If user assigning MIDI commands, do that
-	if (currentUIMode == UI_MODE_MIDI_LEARN) {
-		if (getCurrentUI()->pcReceivedForMidiLearn(cable, channel, program)) {}
+	if (runtimeFeatureSettings.get(RuntimeFeatureSettingType::UseIncomingProgramChanges) == RuntimeFeatureStateToggle::On) {
+		// try changing preset from here...
+		
+	} else {
+		// If user assigning MIDI commands, do that
+		if (currentUIMode == UI_MODE_MIDI_LEARN) {
+			if (getCurrentUI()->pcReceivedForMidiLearn(cable, channel, program)) {}
+			else {
+				view.pcReceivedForMIDILearn(cable, channel, program);
+			}
+		}
 		else {
-			view.pcReceivedForMIDILearn(cable, channel, program);
+			// we build ontop of the CC hack
+			offerNoteToLearnedThings(cable, true, channel + IS_A_PC, program);
 		}
 	}
-	else {
-		// we build ontop of the CC hack
-		offerNoteToLearnedThings(cable, true, channel + IS_A_PC, program);
-	}
 }
+
 bool PlaybackHandler::offerNoteToLearnedThings(MIDICable& cable, bool on, int32_t channel, int32_t note) {
 
 	// Otherwise, enact the relevant MIDI command, if it can be found

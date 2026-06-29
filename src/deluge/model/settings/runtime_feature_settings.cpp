@@ -200,6 +200,11 @@ void RuntimeFeatureSettings::init() {
 	SetupOnOffSetting(settings[RuntimeFeatureSettingType::ShowBatteryLevel],
 	                  STRING_FOR_COMMUNITY_FEATURE_SHOW_BATTERY_LEVEL, "showBatteryLevel",
 	                  RuntimeFeatureStateToggle::On);
+
+	// Use incoming MIDI Program changes
+	SetupOnOffSetting(settings[RuntimeFeatureSettingType::UseIncomingProgramChanges],
+	                  STRING_FOR_COMMUNITY_FEATURE_USE_INCOMING_PROGRAM_CHANGES, "useIncomingProgramChanges",
+	                  RuntimeFeatureStateToggle::On);
 }
 
 void RuntimeFeatureSettings::readSettingsFromFile() {
