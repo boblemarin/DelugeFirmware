@@ -57,7 +57,7 @@ void SoundDrum::noteOn(ModelStackWithThreeMainThings* modelStack, uint8_t veloci
                        int32_t fromMIDIChannel, uint32_t sampleSyncLength, int32_t ticksLate, uint32_t samplesLate) {
 
 	// If part of a Kit, and in choke mode, choke other drums
-	if ((polyphonic == PolyphonyMode::CHOKE_A || polyphonic == PolyphonyMode::CHOKE_B) && (kit != nullptr)) {
+	if ((polyphonic == PolyphonyMode::CHOKE || polyphonic == PolyphonyMode::CHOKE_2) && (kit != nullptr)) {
 		kit->choke(polyphonic);
 	}
 
