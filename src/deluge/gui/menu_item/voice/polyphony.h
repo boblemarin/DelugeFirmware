@@ -132,8 +132,8 @@ public:
 		};
 
 		if (soundEditor.editingKit()) {
-			options.push_back(l10n::getView(l10n::String::STRING_FOR_CHOKE_A));
-			options.push_back(l10n::getView(l10n::String::STRING_FOR_CHOKE_B));
+			options.push_back(l10n::getView(l10n::String::STRING_FOR_CHOKE));
+			options.push_back(l10n::getView(l10n::String::STRING_FOR_CHOKE_2));
 		}
 		return options;
 	}
