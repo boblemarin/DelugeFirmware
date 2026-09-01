@@ -438,10 +438,11 @@ enum class PolyphonyMode : uint8_t {
 	POLY,
 	MONO,
 	LEGATO,
-	CHOKE,
+	CHOKE_A,
+	CHOKE_B,
 };
 
-constexpr auto kNumPolyphonyModes = util::to_underlying(PolyphonyMode::CHOKE) + 1;
+constexpr auto kNumPolyphonyModes = util::to_underlying(PolyphonyMode::CHOKE_B) + 1;
 
 constexpr int32_t kNumericDisplayLength = 4;
 constexpr size_t kNumGoldKnobIndicatorLEDs = 4;

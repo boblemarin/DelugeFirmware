@@ -51,7 +51,7 @@ public:
 	void writeToFileAsInstrument(bool savingSong, ParamManager* paramManager);
 	std::string getDrumName() override;
 	Error readFromFile(Deserializer& reader, Song* song, Clip* clip, int32_t readAutomationUpToPos) override;
-	void choke(ModelStackWithSoundFlags* modelStack) override;
+	void choke(ModelStackWithSoundFlags* modelStack, PolyphonyMode chokeGroup) override;
 	void setSkippingRendering(bool newSkipping) override;
 	uint8_t* getModKnobMode() override;
 	void drumWontBeRenderedForAWhile() override;

@@ -897,8 +897,11 @@ char const* polyphonyModeToString(PolyphonyMode synthMode) {
 	case PolyphonyMode::LEGATO:
 		return "legato";
 
-	case PolyphonyMode::CHOKE:
-		return "choke";
+	case PolyphonyMode::CHOKE_A:
+		return "choke A";
+
+	case PolyphonyMode::CHOKE_B:
+		return "choke B";
 
 	default: // case PolyphonyMode::POLY:
 		return "poly";
@@ -919,10 +922,16 @@ PolyphonyMode stringToPolyphonyMode(char const* string) {
 		return PolyphonyMode::LEGATO;
 	}
 	else if (!strcmp(string, "choke")) {
-		return PolyphonyMode::CHOKE;
+		return PolyphonyMode::CHOKE_A;
+	}
+	else if (!strcmp(string, "choke A")) {
+		return PolyphonyMode::CHOKE_A;
+	}
+	else if (!strcmp(string, "choke B")) {
+		return PolyphonyMode::CHOKE_B;
 	}
 	else if (!strcmp(string, "2")) {
-		return PolyphonyMode::CHOKE; // Old firmware, pre June 2017
+		return PolyphonyMode::CHOKE_A; // Old firmware, pre June 2017
 	}
 	else {
 		return PolyphonyMode::POLY;

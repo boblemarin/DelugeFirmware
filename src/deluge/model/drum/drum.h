@@ -79,7 +79,8 @@ public:
 	virtual Error readFromFile(Deserializer& reader, Song* song, Clip* clip, int32_t readAutomationUpToPos) = 0;
 	virtual void drumWontBeRenderedForAWhile();
 	virtual std::string getDrumName() = 0;
-	virtual void choke(ModelStackWithSoundFlags* modelStack) {} // modelStack can be NULL if you really insist
+	virtual void choke(ModelStackWithSoundFlags* modelStack, PolyphonyMode chokeGroup) {
+	} // modelStack can be NULL if you really insist
 
 	void writeMIDICommandsToFile(Serializer& writer);
 	void writeDrumTagsToFile(Serializer& writer);
